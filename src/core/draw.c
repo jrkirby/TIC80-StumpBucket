@@ -367,6 +367,23 @@ void tic_api_cls(tic_mem* memory, u8 color)
     }
 }
 
+void tic_api_clear(tic_mem* memory, u8 color)
+{
+    static const tic_clip_data EmptyClip = { 0, 0, TIC80_WIDTH, TIC80_HEIGHT };
+
+    tic_core* core = (tic_core*)memory;
+
+    if (memcmp(&core->state.clip, &EmptyClip, sizeof(tic_clip_data)) == 0)
+    {
+        color &= 0b00001111;
+        memset(memory->ram.vram.screen.data, color | (color << TIC_PALETTE_BPP), sizeof(memory->ram.vram.screen.data));
+    }
+    else
+    {
+        tic_api_rect(memory, core->state.clip.l, core->state.clip.t, core->state.clip.r - core->state.clip.l, core->state.clip.b - core->state.clip.t, color);
+    }
+}
+
 s32 tic_api_font(tic_mem* memory, const char* text, s32 x, s32 y, u8 chromakey, s32 w, s32 h, bool fixed, s32 scale, bool alt)
 {
     u8* mapping = getPalette(memory, &chromakey, 1);

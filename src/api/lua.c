@@ -134,6 +134,17 @@ static s32 lua_cls(lua_State* lua)
     return 0;
 }
 
+static s32 lua_clear(lua_State* lua)
+{
+    s32 top = lua_gettop(lua);
+
+    tic_mem* tic = (tic_mem*)getLuaCore(lua);
+
+    tic_api_clear(tic, top == 1 ? getLuaNumber(lua, 1) : 0);
+
+    return 0;
+}
+
 static s32 lua_pix(lua_State* lua)
 {
     s32 top = lua_gettop(lua);

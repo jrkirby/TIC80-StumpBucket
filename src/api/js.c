@@ -1,4 +1,4 @@
-﻿// MIT License
+// MIT License
 
 // Copyright (c) 2017 Vadim Grigoruk @nesbox // grigoruk@gmail.com
 
@@ -77,6 +77,15 @@ static duk_ret_t duk_cls(duk_context* duk)
     tic_mem* tic = (tic_mem*)getDukCore(duk);
 
     tic_api_cls(tic, duk_opt_int(duk, 0, 0));
+
+    return 0;
+}
+
+static duk_ret_t duk_clear(duk_context* duk)
+{
+    tic_mem* tic = (tic_mem*)getDukCore(duk);
+
+    tic_api_clear(tic, duk_opt_int(duk, 0, 0));
 
     return 0;
 }
@@ -424,7 +433,7 @@ static duk_ret_t duk_map(duk_context* duk)
     {
         if(!duk_is_null_or_undefined(duk, 6))
         {
-            if(duk_is_array(duk, 6))
+            if(duk_isarray(duk, 6))
             {
                 for(s32 i = 0; i < TIC_PALETTE_SIZE; i++)
                 {

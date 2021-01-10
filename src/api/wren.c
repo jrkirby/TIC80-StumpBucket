@@ -83,6 +83,8 @@ class TIC {\n\
     foreign static tri(x1, y1, x2, y2, x3, y3, color)\n\
     foreign static cls()\n\
     foreign static cls(color)\n\
+    foreign static clear()\n\
+    foreign static clear(color)\n\
     foreign static clip()\n\
     foreign static clip(x, y, w, h)\n\
     foreign static peek(addr)\n\
@@ -885,6 +887,15 @@ static void wren_cls(WrenVM* vm)
     tic_api_cls(tic, top == 1 ? 0 : getWrenNumber(vm, 1));
 }
 
+static void wren_clear(WrenVM* vm)
+{
+    int top = wrenGetSlotCount(vm);
+
+    tic_mem* tic = (tic_mem*)getWrenCore(vm);
+
+    tic_api_clear(tic, top == 1 ? 0 : getWrenNumber(vm, 1));
+}
+
 static void wren_clip(WrenVM* vm)
 {
     s32 top = wrenGetSlotCount(vm);
@@ -1262,6 +1273,8 @@ static WrenForeignMethodFn foreignTicMethods(const char* signature)
 
     if (strcmp(signature, "static TIC.cls()"                    ) == 0) return wren_cls;
     if (strcmp(signature, "static TIC.cls(_)"                   ) == 0) return wren_cls;
+    if (strcmp(signature, "static TIC.clear()"                  ) == 0) return wren_clear;
+    if (strcmp(signature, "static TIC.clear(_)"                 ) == 0) return wren_clear;
     if (strcmp(signature, "static TIC.clip()"                   ) == 0) return wren_clip;
     if (strcmp(signature, "static TIC.clip(_,_,_,_)"            ) == 0) return wren_clip;
 
