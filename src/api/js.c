@@ -1,4 +1,4 @@
-// MIT License
+﻿// MIT License
 
 // Copyright (c) 2017 Vadim Grigoruk @nesbox // grigoruk@gmail.com
 
@@ -433,7 +433,7 @@ static duk_ret_t duk_map(duk_context* duk)
     {
         if(!duk_is_null_or_undefined(duk, 6))
         {
-            if(duk_isarray(duk, 6))
+            if(duk_is_array(duk, 6))
             {
                 for(s32 i = 0; i < TIC_PALETTE_SIZE; i++)
                 {
