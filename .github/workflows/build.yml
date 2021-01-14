@@ -21,9 +21,11 @@ jobs:
 
     - name: Build
       run: |
-        printenv
         cd build
         emcmake cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE ..
+        echo "ENVIRONMENT VARIABLES"
+        printenv
+        echo "ENVIRONMENT VARIABLES END"
         cmake --build . --parallel --config $BUILD_TYPE
         cp html/export.html bin/index.html
 
