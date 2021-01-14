@@ -79,6 +79,12 @@ static void drawHLineOvr(tic_mem* tic, s32 x1, s32 x2, s32 y, u8 color)
     }
 }
 
+void tic_api_console_js()
+{
+    emscripten_run_script("console.log('testing calling js from deep inside')");
+    return 0;
+}
+
 u8 tic_api_peek(tic_mem* memory, s32 address)
 {
     if (address >= 0 && address < sizeof(tic_ram))

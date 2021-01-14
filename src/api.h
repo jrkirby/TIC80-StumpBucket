@@ -142,7 +142,7 @@ typedef struct
     macro(keyp,         3,  bool,       tic_mem*, tic_key key, s32 hold, s32 period) \
     macro(fget,         2,  bool,       tic_mem*, s32 index, u8 flag) \
     macro(fset,         3,  void,       tic_mem*, s32 index, u8 flag, bool value) \
-    macro(clear,        1,  void,       tic_mem*, u8 color)
+    macro(console_js,   0,  void,       tic_mem*)
 //      |         |       |             |
 //      '---------+-------+-------------+------------------- - - -
 

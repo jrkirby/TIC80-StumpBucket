@@ -134,13 +134,13 @@ static s32 lua_cls(lua_State* lua)
     return 0;
 }
 
-static s32 lua_clear(lua_State* lua)
+static s32 lua_console_js(lua_State* lua)
 {
     s32 top = lua_gettop(lua);
 
     tic_mem* tic = (tic_mem*)getLuaCore(lua);
 
-    tic_api_clear(tic, top == 1 ? getLuaNumber(lua, 1) : 0);
+    tic_api_console_js(tic);
 
     return 0;
 }

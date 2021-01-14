@@ -81,11 +81,11 @@ static duk_ret_t duk_cls(duk_context* duk)
     return 0;
 }
 
-static duk_ret_t duk_clear(duk_context* duk)
+static duk_ret_t duk_console_js(duk_context* duk)
 {
     tic_mem* tic = (tic_mem*)getDukCore(duk);
 
-    tic_api_clear(tic, duk_opt_int(duk, 0, 0));
+    tic_api_console_js(tic);
 
     return 0;
 }

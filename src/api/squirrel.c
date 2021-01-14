@@ -184,13 +184,13 @@ static SQInteger squirrel_cls(HSQUIRRELVM vm)
     return 0;
 }
 
-static SQInteger squirrel_clear(HSQUIRRELVM vm)
+static SQInteger squirrel_console_js(HSQUIRRELVM vm)
 {
     SQInteger top = sq_gettop(vm);
 
     tic_mem* tic = (tic_mem*)getSquirrelCore(vm);
 
-    tic_api_clear(tic, top == 2 ? getSquirrelNumber(vm, 2) : 0);
+    tic_api_console_js(tic);
 
     return 0;
 }
