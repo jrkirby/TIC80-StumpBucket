@@ -31,6 +31,7 @@
 #include <ctype.h>
 #include <stddef.h>
 #include <time.h>
+#include <emscripten.h>
 
 #ifdef _3DS
 #include <3ds.h>
