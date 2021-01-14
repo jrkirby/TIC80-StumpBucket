@@ -23,6 +23,7 @@ jobs:
       run: |
         cd build
         emcmake cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE ..
+        emcc --version
         echo "ENVIRONMENT VARIABLES"
         printenv
         echo "ENVIRONMENT VARIABLES END"
